@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Feedback Form</title>
+   <style>body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background: #f4f4f4;
+}
+
+header {
+    background: #444;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+}
+
+header nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+main {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+form input, form textarea, form button {
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+}
+
+form button {
+    margin-top: 20px;
+    background: #444;
+    color: white;
+    border: none;
+    cursor: pointer;
+
+}
+
+form button:hover {
+    background: #555;
+}
+
+#feedbackReport {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+#feedbackReport h2 {
+    margin: 0 0 10px 0;
+}
+</style>
+</head>
+<body>
+    <header>
+        <h1>Feedback Form</h1>
+        <nav>
+            <a href="Project10.html">Home</a>
+           
+        </nav>
+    </header>
+    <main>
+        <form id="feedbackForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="rating">Rate Your Experience (1-5):</label>
+            <input type="number" id="rating" name="rating" min="1" max="5" required>
+
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments" rows="4" placeholder="Share your thoughts..."></textarea>
+
+            <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+        </form>
+        <section id="feedbackReport" style="display: none;">
+            <h2>Feedback Report</h2>
+            <p><strong>Name:</strong> <span id="reportName"></span></p>
+            <p><strong>Rating:</strong> <span id="reportRating"></span></p>
+            <p><strong>Comments:</strong> <span id="reportComments"></span></p>
+        </section>
+    </main>
+    
+    <script>
+        function submitFeedback() {
+            const name = document.getElementById('name').value;
+            const rating = document.getElementById('rating').value;
+            const comments = document.getElementById('comments').value;
+
+            if (!name || !rating) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            document.getElementById('reportName').textContent = name;
+            document.getElementById('reportRating').textContent = rating;
+            document.getElementById('reportComments').textContent = comments ? comments : 'No comments provided.';
+
+            document.getElementById('feedbackReport').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
